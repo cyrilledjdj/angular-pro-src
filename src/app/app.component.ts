@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './auth-form/auth-form';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-pro-src';
+
+  createUser(user: User) {
+    console.log('Create account', user);
+  }
+
+  loginUser(user: User) {
+    console.log('Login', user);
+  }
 }
