@@ -13,6 +13,7 @@ import { AuthRememberComponent } from './auth-remember.component';
     BrowserModule,
     FormsModule
   ],
+  entryComponents: [AuthFormComponent],
   exports: [AuthFormComponent, AuthRememberComponent]
 })
 export class AuthFormModule { }
