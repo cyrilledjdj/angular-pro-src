@@ -7,14 +7,14 @@ import { User } from './auth-form/auth-form';
 @Component({
   selector: 'app-root',
   template: /* html */`
-    <example-one></example-one>
-    <example-two></example-two>
-    <example-three></example-three>
     <div>
-      <ng-container [ngTemplateOutlet]=tmpl [ngTemplateOutletContext]=ctx></ng-container>
-      <ng-template #tmpl let-name let-location="location">
-      {{name}}: {{location}}
-      </ng-template>
+      <button (click)="addProp()">Add property</button>
+      <button (click)="changeUser()">Change user object</button>
+      <button (click)="changeName()">Change name property</button>
+      <div class="users">
+        <example1 [user]="user"></example1>
+        <example2 [user]="user"></example2>
+      </div>
     </div>
   `
 })
@@ -31,6 +31,11 @@ export class AppComponent implements AfterContentInit {
   ctx = {
     $implicit: 'Cyrille',
     location: 'England UK'
+  };
+  user: any = {
+    name: 'Mark Hoppus',
+    age: 44,
+    location: 'California'
   };
 
   ngAfterContentInit() {
@@ -59,5 +64,21 @@ export class AppComponent implements AfterContentInit {
 
   moveComponent() {
     this.entry.move(this.component.hostView, 1);
+  }
+
+  addProp() {
+    this.user.email = 'blink@blink-182.net';
+  }
+
+  changeName() {
+    this.user.name = 'Travis Barker';
+  }
+
+  changeUser() {
+    this.user = {
+      name: 'Tom Delonge',
+      age: 41,
+      location: 'California'
+    };
   }
 }

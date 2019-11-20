@@ -7,6 +7,8 @@ import { AuthFormModule } from './auth-form/auth-form.module';
 import { ExampleOneComponent } from './one/example-one.component';
 import { ExampleTwoComponent } from './two/example-two.component';
 import { ExampleThreeComponent } from './three/example-three.component';
+import { Example1Component } from './other/example1.component';
+import { Example2Component } from './other/example2.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { ExampleThreeComponent } from './three/example-three.component';
     ExampleOneComponent,
     ExampleTwoComponent,
     ExampleThreeComponent,
+    Example1Component,
+    Example2Component,
   ],
   imports: [
     BrowserModule,
