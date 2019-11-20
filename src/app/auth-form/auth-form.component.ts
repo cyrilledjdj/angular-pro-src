@@ -1,7 +1,7 @@
-import { AfterContentInit, Component, ContentChild, EventEmitter, Output, ContentChildren, QueryList, ViewChild, AfterViewInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChildren, EventEmitter, Output, QueryList, ViewChildren, ChangeDetectorRef } from '@angular/core';
 import { User } from './auth-form';
-import { AuthRememberComponent } from './auth-remember.component';
 import { AuthMessageComponent } from './auth-message.component';
+import { AuthRememberComponent } from './auth-remember.component';
 
 @Component({
   selector: 'auth-form',
@@ -19,6 +19,8 @@ import { AuthMessageComponent } from './auth-message.component';
         </label>
         <ng-content select="auth-remember"></ng-content>
         <auth-message [style.display]="showMessage ? 'inherit' : 'none'"></auth-message>
+        <auth-message [style.display]="showMessage ? 'inherit' : 'none'"></auth-message>
+        <auth-message [style.display]="showMessage ? 'inherit' : 'none'"></auth-message>
         <ng-content select=button></ng-content>
       </form>
       {{form.value | json}}
@@ -29,9 +31,13 @@ import { AuthMessageComponent } from './auth-message.component';
 export class AuthFormComponent implements AfterContentInit, AfterViewInit {
 
   @ContentChildren(AuthRememberComponent) remember: QueryList<AuthRememberComponent>;
-  @ViewChild(AuthMessageComponent, { static: true })
-  message: AuthMessageComponent;
+  @ViewChildren(AuthMessageComponent)
+  message: QueryList<AuthMessageComponent>;
   showMessage: boolean;
+
+  constructor(private cd: ChangeDetectorRef) {
+
+  }
 
   @Output()
   submitted: EventEmitter<User> = new EventEmitter<User>();
@@ -41,9 +47,6 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   }
 
   ngAfterContentInit() {
-    if (this.message) {
-      this.message.days = 30;
-    }
     if (this.remember) {
       console.log(this.remember);
       this.remember.forEach((item) => {
@@ -56,5 +59,9 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   }
   ngAfterViewInit() {
     console.log('AfterViewInit', this.message);
+    if (this.message) {
+      this.message.forEach((message: AuthMessageComponent) => message.days = 30);
+    }
+    this.cd.detectChanges();
   }
 }
