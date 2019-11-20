@@ -9,8 +9,8 @@ import { User } from './auth-form/auth-form';
   template: /* html */`
     <div>
       <div #entry></div>
-      <ng-template #tmpl>
-      Todd Motto: England UK
+      <ng-template #tmpl let-name let-location="location">
+      {{name}}: {{location}}
       </ng-template>
     </div>
   `
@@ -35,7 +35,10 @@ export class AppComponent implements AfterContentInit {
     // this.component.instance.submitted.subscribe(this.loginUser);
     // this.entry.createComponent(authFormFactory);
 
-    this.entry.createEmbeddedView(this.tmpl);
+    this.entry.createEmbeddedView(this.tmpl, {
+      $implicit: 'Cyrille',
+      location: 'England UK'
+    });
   }
 
   loginUser(user: User) {
