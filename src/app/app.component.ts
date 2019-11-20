@@ -8,7 +8,7 @@ import { User } from './auth-form/auth-form';
   selector: 'app-root',
   template: /* html */`
     <div>
-      <div #entry></div>
+      <ng-container #entry [ngTemplateOutlet]=tmpl></ng-container>
       <ng-template #tmpl let-name let-location="location">
       {{name}}: {{location}}
       </ng-template>
