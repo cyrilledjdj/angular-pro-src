@@ -1,6 +1,7 @@
-import { AfterContentInit, Component, ContentChild, EventEmitter, Output, ContentChildren, QueryList } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, EventEmitter, Output, ContentChildren, QueryList, ViewChild, AfterViewInit } from '@angular/core';
 import { User } from './auth-form';
 import { AuthRememberComponent } from './auth-remember.component';
+import { AuthMessageComponent } from './auth-message.component';
 
 @Component({
   selector: 'auth-form',
@@ -17,9 +18,7 @@ import { AuthRememberComponent } from './auth-remember.component';
           <input ngModel type="password" name="password">
         </label>
         <ng-content select="auth-remember"></ng-content>
-        <div *ngIf="showMessage">
-          You will be logged in for 30 days;
-        </div>
+        <auth-message [style.display]="showMessage ? 'inherit' : 'none'"></auth-message>
         <ng-content select=button></ng-content>
       </form>
       {{form.value | json}}
@@ -27,9 +26,11 @@ import { AuthRememberComponent } from './auth-remember.component';
   `,
   styles: []
 })
-export class AuthFormComponent implements AfterContentInit {
+export class AuthFormComponent implements AfterContentInit, AfterViewInit {
 
   @ContentChildren(AuthRememberComponent) remember: QueryList<AuthRememberComponent>;
+  @ViewChild(AuthMessageComponent, { static: true })
+  message: AuthMessageComponent;
   showMessage: boolean;
 
   @Output()
@@ -40,6 +41,9 @@ export class AuthFormComponent implements AfterContentInit {
   }
 
   ngAfterContentInit() {
+    if (this.message) {
+      this.message.days = 30;
+    }
     if (this.remember) {
       console.log(this.remember);
       this.remember.forEach((item) => {
@@ -49,5 +53,8 @@ export class AuthFormComponent implements AfterContentInit {
       //   this.showMessage = checked;
       // });
     }
+  }
+  ngAfterViewInit() {
+    console.log('AfterViewInit', this.message);
   }
 }
