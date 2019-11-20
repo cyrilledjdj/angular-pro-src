@@ -7,7 +7,7 @@ import { AuthRememberComponent } from './auth-remember.component';
   selector: 'auth-form',
   template: /*html*/`
     <div>
-      <form class="d-flex flex-column justify-content-center" #form="ngForm" no-validate (ngSubmit)="onSubmit(form.value)">
+      <form #form="ngForm" no-validate (ngSubmit)="onSubmit(form.value)">
         <ng-content select=h3></ng-content>
         <label>
           Email address
@@ -24,7 +24,7 @@ import { AuthRememberComponent } from './auth-remember.component';
       {{form.value | json}}
     </div>
   `,
-  styles: []
+  styles: [/* css */`.email{border-color: #9f72e6}`]
 })
 export class AuthFormComponent implements AfterContentInit, AfterViewInit {
 
@@ -59,7 +59,10 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   }
   ngAfterViewInit() {
     // console.log('AfterViewInit', this.message);
-    console.log('email', this.email);
+    console.log('email', this.email.nativeElement);
+    this.email.nativeElement.setAttribute('placeholder', 'Enter your email address.');
+    this.email.nativeElement.classList.add('email');
+    this.email.nativeElement.focus();
     if (this.message) {
       this.message.forEach((message: AuthMessageComponent) => message.days = 30);
     }
