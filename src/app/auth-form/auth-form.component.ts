@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChildren, EventEmitter, Output, QueryList, ViewChildren, ChangeDetectorRef } from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { User } from './auth-form';
 import { AuthMessageComponent } from './auth-message.component';
 import { AuthRememberComponent } from './auth-remember.component';
@@ -11,15 +11,13 @@ import { AuthRememberComponent } from './auth-remember.component';
         <ng-content select=h3></ng-content>
         <label>
           Email address
-          <input ngModel type="email" name="email">
+          <input ngModel type="email" name="email" #email>
         </label>
         <label>
           Password
           <input ngModel type="password" name="password">
         </label>
         <ng-content select="auth-remember"></ng-content>
-        <auth-message [style.display]="showMessage ? 'inherit' : 'none'"></auth-message>
-        <auth-message [style.display]="showMessage ? 'inherit' : 'none'"></auth-message>
         <auth-message [style.display]="showMessage ? 'inherit' : 'none'"></auth-message>
         <ng-content select=button></ng-content>
       </form>
@@ -33,6 +31,8 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   @ContentChildren(AuthRememberComponent) remember: QueryList<AuthRememberComponent>;
   @ViewChildren(AuthMessageComponent)
   message: QueryList<AuthMessageComponent>;
+
+  @ViewChild('email', { static: true }) email: ElementRef<HTMLInputElement>;
   showMessage: boolean;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -48,7 +48,7 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
 
   ngAfterContentInit() {
     if (this.remember) {
-      console.log(this.remember);
+      // console.log(this.remember);
       this.remember.forEach((item) => {
         item.checked.subscribe((checked: boolean) => this.showMessage = checked);
       });
@@ -58,7 +58,8 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
     }
   }
   ngAfterViewInit() {
-    console.log('AfterViewInit', this.message);
+    // console.log('AfterViewInit', this.message);
+    console.log('email', this.email);
     if (this.message) {
       this.message.forEach((message: AuthMessageComponent) => message.days = 30);
     }
