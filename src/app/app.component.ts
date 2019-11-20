@@ -8,7 +8,7 @@ import { User } from './auth-form/auth-form';
   selector: 'app-root',
   template: /* html */`
     <div>
-      <ng-container #entry [ngTemplateOutlet]=tmpl></ng-container>
+      <ng-container #entry [ngTemplateOutlet]=tmpl [ngTemplateOutletContext]=ctx></ng-container>
       <ng-template #tmpl let-name let-location="location">
       {{name}}: {{location}}
       </ng-template>
@@ -25,6 +25,10 @@ export class AppComponent implements AfterContentInit {
   ) { }
 
   component: ComponentRef<AuthFormComponent>;
+  ctx = {
+    $implicit: 'Cyrille',
+    location: 'England UK'
+  };
 
   ngAfterContentInit() {
     // const authFormFactory = this.resolver.resolveComponentFactory(AuthFormComponent);
@@ -35,10 +39,7 @@ export class AppComponent implements AfterContentInit {
     // this.component.instance.submitted.subscribe(this.loginUser);
     // this.entry.createComponent(authFormFactory);
 
-    this.entry.createEmbeddedView(this.tmpl, {
-      $implicit: 'Cyrille',
-      location: 'England UK'
-    });
+    // this.entry.createEmbeddedView(this.tmpl, this.ctx);
   }
 
   loginUser(user: User) {
