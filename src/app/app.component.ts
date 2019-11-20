@@ -7,8 +7,11 @@ import { User } from './auth-form/auth-form';
 @Component({
   selector: 'app-root',
   template: /* html */`
+    <example-one></example-one>
+    <example-two></example-two>
+    <example-three></example-three>
     <div>
-      <ng-container #entry [ngTemplateOutlet]=tmpl [ngTemplateOutletContext]=ctx></ng-container>
+      <ng-container [ngTemplateOutlet]=tmpl [ngTemplateOutletContext]=ctx></ng-container>
       <ng-template #tmpl let-name let-location="location">
       {{name}}: {{location}}
       </ng-template>
