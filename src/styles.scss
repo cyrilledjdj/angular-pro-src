@@ -87,6 +87,9 @@ app-root {
   box-shadow: 0 1px 4px rgba(53,60,72,0.1);
   padding: 20px 30px;
 }
+app-root > div {
+  display: flex;
+}
 form {
   flex: 1 0;
   padding: 0 40px;
