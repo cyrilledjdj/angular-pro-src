@@ -12,6 +12,7 @@ import { Example2Component } from './other/example2.component';
 import { CreditCardDirective } from './credit-card/credit-card.directive';
 import { TooltipDirective } from './tooltip/tooltip.directive';
 import { MyForDirective } from './my-for/my-for.directive';
+import { FileSizePipe } from './file-size/file-size.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MyForDirective } from './my-for/my-for.directive';
     CreditCardDirective,
     TooltipDirective,
     MyForDirective,
+    FileSizePipe,
   ],
   imports: [
     BrowserModule,

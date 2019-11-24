@@ -7,7 +7,6 @@ export class MyForDirective {
 
   @Input()
   set myForOf(collection) {
-    console.log(collection);
     this.view.clear();
     collection.forEach((item, index) => {
       this.view.createEmbeddedView(this.template, {
