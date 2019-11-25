@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormArray, AbstractControl } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'stock-products',
@@ -11,6 +11,9 @@ export class StockProductsComponent implements OnInit {
   @Input()
   parent: FormGroup;
 
+  @Output()
+  removed = new EventEmitter<any>();
+
   get stocks(): AbstractControl[] {
     return (this.parent.get('stock') as FormArray).controls;
   }
@@ -18,6 +21,10 @@ export class StockProductsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onRemove(index) {
+    this.removed.emit(index);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, AbstractControl } from '@angular/forms';
 import { Product } from '../../models/product';
 
 @Component({
@@ -43,6 +43,13 @@ export class StockInventoryComponent implements OnInit {
 
   onSubmit() {
     console.log('Submit:', this.form.value);
+  }
+
+  addStock(stock) {
+    (this.form.get('stock') as FormArray).push(this.createStock(stock));
+  }
+  removeStock(stockIndex) {
+    (this.form.get('stock') as FormArray).removeAt(stockIndex);
   }
 
 }
