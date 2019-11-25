@@ -23,12 +23,19 @@ export class StockInventoryComponent implements OnInit {
       branch: new FormControl(''),
       code: new FormControl('')
     }),
-    selector: new FormGroup({
-      product_id: new FormControl(''),
-      quantity: new FormControl(10)
-    }),
-    stock: new FormArray([])
+    selector: this.createStock({}),
+    stock: new FormArray([
+      this.createStock({ product_id: 1, quantity: 10 }),
+      this.createStock({ product_id: 3, quantity: 50 }),
+    ])
   });
+
+  createStock(stock) {
+    return new FormGroup({
+      product_id: new FormControl(parseInt(stock.product_id, 10) || ''),
+      quantity: new FormControl(stock.quantity || 10)
+    });
+  }
   constructor() { }
 
   ngOnInit() {
