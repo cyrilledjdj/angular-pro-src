@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  // tslint:disable-next-line: component-selector
   selector: 'auth-remember',
   template: /* html */`
     <label>

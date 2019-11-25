@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ControlContainer, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  // tslint:disable-next-line: component-selector
   selector: 'stock-inventory',
   templateUrl: './stock-inventory.component.html',
   styleUrls: ['./stock-inventory.component.scss'],
@@ -13,7 +12,12 @@ export class StockInventoryComponent implements OnInit {
     store: new FormGroup({
       branch: new FormControl(''),
       code: new FormControl('')
-    })
+    }),
+    selector: new FormGroup({
+      product_id: new FormControl(''),
+      quantity: new FormControl(0)
+    }),
+    stock: new FormArray([])
   });
   constructor() { }
 
