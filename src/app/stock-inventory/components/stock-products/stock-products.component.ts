@@ -23,8 +23,8 @@ export class StockProductsComponent implements OnInit {
   ngOnInit() {
   }
 
-  onRemove(index) {
-    this.removed.emit(index);
+  onRemove(group, index) {
+    this.removed.emit({ group, index });
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, AbstractControl } from '@angular/forms';
+import { FormArray, FormGroup, FormBuilder } from '@angular/forms';
 import { Product } from '../../models/product';
 
 @Component({
@@ -18,25 +18,28 @@ export class StockInventoryComponent implements OnInit {
     { id: 5, price: 600, name: 'Apple Watch' },
   ];
 
-  form: FormGroup = new FormGroup({
-    store: new FormGroup({
-      branch: new FormControl(''),
-      code: new FormControl('')
+  form: FormGroup = this.fb.group({
+    store: this.fb.group({
+      branch: this.fb.control(''),
+      code: this.fb.control('')
     }),
     selector: this.createStock({}),
-    stock: new FormArray([
+    stock: this.fb.array([
       this.createStock({ product_id: 1, quantity: 10 }),
       this.createStock({ product_id: 3, quantity: 50 }),
     ])
   });
 
+
   createStock(stock) {
-    return new FormGroup({
-      product_id: new FormControl(parseInt(stock.product_id, 10) || ''),
-      quantity: new FormControl(stock.quantity || 10)
+    return this.fb.group({
+      product_id: this.fb.control(parseInt(stock.product_id, 10) || ''),
+      quantity: this.fb.control(stock.quantity || 10)
     });
   }
-  constructor() { }
+  constructor(private fb: FormBuilder) {
+
+  }
 
   ngOnInit() {
   }
@@ -48,8 +51,9 @@ export class StockInventoryComponent implements OnInit {
   addStock(stock) {
     (this.form.get('stock') as FormArray).push(this.createStock(stock));
   }
-  removeStock(stockIndex) {
-    (this.form.get('stock') as FormArray).removeAt(stockIndex);
+  removeStock({ group, index }: { group: FormGroup, index: number }) {
+    console.log('Removing: ', group);
+    (this.form.get('stock') as FormArray).removeAt(index);
   }
 
 }
