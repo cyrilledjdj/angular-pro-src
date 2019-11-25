@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StockInventoryService } from './stock-inventory/services/stock-inventory.service';
 
 
 @Component({
@@ -12,5 +13,9 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   ngOnInit() {
+  }
+
+  constructor(private stService: StockInventoryService) {
+    stService.getProducts().subscribe(data => console.log('appcomponent', data))
   }
 }
