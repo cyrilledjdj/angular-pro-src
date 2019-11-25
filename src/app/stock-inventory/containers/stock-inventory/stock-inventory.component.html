@@ -6,6 +6,9 @@
         <stock-products [parent]="form" (removed)=removeStock($event)
             [map]="productMap">
         </stock-products>
+        <div class="stock-inventory__price">
+            Total: {{total | currency : 'USD'}}
+        </div>
         <div class="stock-inventory__buttons">
             <button type="submit" [disabled]=form.invalid>Order Stock</button>
         </div>
