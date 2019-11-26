@@ -15,10 +15,6 @@ export class StockProductsComponent implements OnInit {
   @Input()
   map: Map<number, Product>;
 
-  getProduct(id) {
-    return this.map.get(id);
-  }
-
   @Output()
   removed = new EventEmitter<any>();
 
@@ -29,6 +25,10 @@ export class StockProductsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getProduct(id) {
+    return this.map.get(id);
   }
 
   onRemove(group, index) {
