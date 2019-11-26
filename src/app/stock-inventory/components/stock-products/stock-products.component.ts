@@ -36,8 +36,10 @@ export class StockProductsComponent implements OnInit {
   }
 
   removeAll() {
-    console.log('remove All');
-    // this.parent.get('stock').setValue([]);
+    const stocks = this.parent.get('stock') as FormArray;
+    while (this.stocks.length) {
+      stocks.removeAt(0);
+    }
   }
 
 }

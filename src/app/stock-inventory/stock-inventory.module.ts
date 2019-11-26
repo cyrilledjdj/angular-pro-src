@@ -7,11 +7,12 @@ import { StockProductsComponent } from './components/stock-products/stock-produc
 import { StockSelectorComponent } from './components/stock-selector/stock-selector.component';
 import { StockInventoryComponent } from './containers/stock-inventory/stock-inventory.component';
 import { StockInventoryService } from './services/stock-inventory.service';
+import { StockCounterComponent } from './components/stock-counter/stock-counter.component';
 
 
 
 @NgModule({
-  declarations: [StockInventoryComponent, StockBranchComponent, StockProductsComponent, StockSelectorComponent],
+  declarations: [StockInventoryComponent, StockBranchComponent, StockProductsComponent, StockSelectorComponent, StockCounterComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

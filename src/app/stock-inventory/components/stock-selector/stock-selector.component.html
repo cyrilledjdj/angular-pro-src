@@ -1,13 +1,14 @@
 <div [formGroup]=parent class="stock-selector">
-    <div formGroupName=selector>
-        <select formControlName="product_id">
-            <option value="">Select stock</option>
-            <option *ngFor="let product of products" [value]="product.id">
-                {{product.name}}
-            </option>
-        </select>
-        <input class="stock-counter" type="number" step='10' min='10' max='1000'
-            formControlName='quantity'>
-        <button type=button (click)=onAdd()>Add stock</button>
-    </div>
+  <div formGroupName=selector>
+    <select formControlName="product_id">
+      <option value="">Select stock</option>
+      <option *ngFor="let product of products" [value]="product.id">
+        {{product.name}}
+      </option>
+    </select>
+    <input class="stock-counter" type="number" step='10' min='10' max='1000'
+      formControlName='quantity'>
+    <stock-counter [step]="10" [min]=10 [max]=1000></stock-counter>
+    <button type=button (click)=onAdd()>Add stock</button>
+  </div>
 </div>
