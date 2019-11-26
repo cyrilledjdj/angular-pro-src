@@ -35,4 +35,9 @@ export class StockProductsComponent implements OnInit {
     this.removed.emit({ group, index });
   }
 
+  removeAll() {
+    console.log('remove All');
+    // this.parent.get('stock').setValue([]);
+  }
+
 }
