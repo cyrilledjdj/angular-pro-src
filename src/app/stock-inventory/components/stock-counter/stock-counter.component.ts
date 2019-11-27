@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, forwardRef, HostListener } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NumberValueAccessor } from '@angular/forms';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'stock-counter',
@@ -23,16 +23,11 @@ export class StockCounterComponent implements OnInit, ControlValueAccessor {
   private onModelChange: Function;
 
   value: number = 10;
+  focus: boolean;
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  @HostListener('touchstart')
-  @HostListener('mousedown')
-  triggerTouch() {
-    this.onTouch();
   }
 
   increment() {
@@ -56,6 +51,34 @@ export class StockCounterComponent implements OnInit, ControlValueAccessor {
   }
   writeValue(value) {
     this.value = value || 10;
+  }
+
+  onKeyDown(event: KeyboardEvent) {
+    const handlers = {
+      ArrowDown: () => this.decrement(),
+      ArrowUp: () => this.increment()
+    };
+
+    if (handlers[event.code]) {
+      handlers[event.code]();
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+  }
+
+  onBlur(event: FocusEvent) {
+    this.focus = false;
+    event.preventDefault();
+    event.stopPropagation();
+    this.onTouch();
+  }
+
+  onFocus(event: FocusEvent) {
+    this.focus = true;
+    event.preventDefault();
+    event.stopPropagation();
+    this.onTouch();
   }
 
 }
