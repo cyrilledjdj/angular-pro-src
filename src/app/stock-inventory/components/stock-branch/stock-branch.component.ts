@@ -16,4 +16,8 @@ export class StockBranchComponent implements OnInit {
   ngOnInit() {
   }
 
+  required(section): boolean {
+    return this.parent.get(section).hasError('required') && this.parent.get(section).touched;
+  }
+
 }
