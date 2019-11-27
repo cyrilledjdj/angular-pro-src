@@ -4,11 +4,11 @@
       <p>{{value}}</p>
       <div>
         <button type=button (click)=increment($event)
-          [disabled]="value === max">
+          [disabled]="value === max || isDisabled">
           +
         </button>
         <button type=button (click)=decrement($event)
-          [disabled]="value === min">
+          [disabled]="value === min || isDisabled">
           -
         </button>
       </div>

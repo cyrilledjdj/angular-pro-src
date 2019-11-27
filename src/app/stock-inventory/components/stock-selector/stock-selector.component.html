@@ -6,9 +6,8 @@
         {{product.name}}
       </option>
     </select>
-    <input class="stock-counter" type="number" step='10' min='10' max='1000'
-      formControlName='quantity'>
-    <stock-counter [step]="10" [min]=10 [max]=1000></stock-counter>
+    <stock-counter [step]="10" [min]=10 [max]=1000 formControlName='quantity'>
+    </stock-counter>
     <button type=button (click)=onAdd()>Add stock</button>
   </div>
 </div>
