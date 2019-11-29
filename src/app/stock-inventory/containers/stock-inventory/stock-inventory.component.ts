@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Product, Item } from '../../models/product';
 import { StockInventoryService } from '../../services/stock-inventory.service';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { StockValidators } from './stock-validators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'stock-inventory',
@@ -18,7 +19,10 @@ export class StockInventoryComponent implements OnInit {
 
   form: FormGroup = this.fb.group({
     store: this.fb.group({
-      branch: this.fb.control('', [StockValidators.checkBranch, Validators.required]),
+      branch: this.fb.control('', [
+        StockValidators.checkBranch,
+        Validators.required
+      ], [this.validateBranch.bind(this)]),
       code: this.fb.control('', Validators.required)
     }),
     selector: this.createStock({}),
@@ -44,6 +48,14 @@ export class StockInventoryComponent implements OnInit {
       this.calculateTotal(this.form.get('stock').value);
       this.form.get('stock').valueChanges.subscribe(value => this.calculateTotal(value));
     });
+  }
+
+  validateBranch(control: AbstractControl): Observable<ValidationErrors> {
+    return this.stockService.checkBranchId(control.value).pipe(
+      map((response: boolean) => {
+        return response ? null : { unknownBranch: true }
+      })
+    )
   }
 
   calculateTotal(value: Item[]) {

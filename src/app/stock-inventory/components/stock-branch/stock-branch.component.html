@@ -5,7 +5,10 @@
       Branch ID is required.
     </div>
     <div class=error *ngIf="invalid">
-      Invalidi branch code: 1 letter, 5 numbers
+      Invalid branch code: 1 letter, 5 numbers
+    </div>
+    <div class=error *ngIf="unknown">
+      Unknown branch, please check the ID
     </div>
     <input type="text" placeholder="Manager Code" formControlName=code>
     <div class=error *ngIf="required('store.code')">
