@@ -8,6 +8,9 @@
     </select>
     <stock-counter [step]="10" [min]=10 [max]=1000 formControlName='quantity'>
     </stock-counter>
-    <button type=button (click)=onAdd()>Add stock</button>
+    <button type=button (click)=onAdd() [disabled]=stockExists||notSelected>Add stock</button>
+    <div class="stock-selector__error" *ngIf="stockExists">
+      Item already exists in the stock
+    </div>
   </div>
 </div>
