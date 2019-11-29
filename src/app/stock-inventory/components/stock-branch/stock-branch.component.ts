@@ -17,7 +17,16 @@ export class StockBranchComponent implements OnInit {
   }
 
   required(section): boolean {
-    return this.parent.get(section).hasError('required') && this.parent.get(section).touched;
+    return this.parent.get(section).hasError('required') &&
+      this.parent.get(section).touched;
+  }
+
+  get invalid() {
+    return (
+      this.parent.get('store.branch').hasError('invalidBranch') &&
+      this.parent.get('store.branch').dirty &&
+      !this.required('store.branch')
+    );
   }
 
 }

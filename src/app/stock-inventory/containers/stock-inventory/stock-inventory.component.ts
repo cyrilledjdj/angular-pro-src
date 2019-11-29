@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product, Item } from '../../models/product';
 import { StockInventoryService } from '../../services/stock-inventory.service';
 import { forkJoin } from 'rxjs';
+import { StockValidators } from './stock-validators';
 
 @Component({
   selector: 'stock-inventory',
@@ -17,7 +18,7 @@ export class StockInventoryComponent implements OnInit {
 
   form: FormGroup = this.fb.group({
     store: this.fb.group({
-      branch: this.fb.control('', Validators.required),
+      branch: this.fb.control('', [StockValidators.checkBranch, Validators.required]),
       code: this.fb.control('', Validators.required)
     }),
     selector: this.createStock({}),
