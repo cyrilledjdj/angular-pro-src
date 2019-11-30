@@ -14,6 +14,7 @@ import { TooltipDirective } from './tooltip/tooltip.directive';
 import { MyForDirective } from './my-for/my-for.directive';
 import { FileSizePipe } from './file-size/file-size.pipe';
 import { StockInventoryModule } from './stock-inventory/stock-inventory.module';
+import { MailModule } from './mail/mail.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { StockInventoryModule } from './stock-inventory/stock-inventory.module';
     BrowserModule,
     AppRoutingModule,
     AuthFormModule,
-    StockInventoryModule
+    StockInventoryModule,
+    MailModule
   ],
   providers: [],
   bootstrap: [AppComponent]

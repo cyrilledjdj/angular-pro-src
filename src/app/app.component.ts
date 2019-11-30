@@ -4,11 +4,8 @@ import { StockInventoryService } from './stock-inventory/services/stock-inventor
 
 @Component({
   selector: 'app-root',
-  template: /* html */`
-  <div>
-    <stock-inventory></stock-inventory>
-  </div>
-  `
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
 
