@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Mail } from '../models/mail';
+import { Mail } from '../../models/mail';
 
 @Component({
   selector: 'mail-folder',
