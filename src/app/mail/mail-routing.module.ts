@@ -4,7 +4,8 @@ import { MailFolderComponent } from './containers/mail-folder/mail-folder.compon
 
 
 const routes: Routes = [
-  { path: 'folder/:name', component: MailFolderComponent }
+  { path: 'folder/:name', component: MailFolderComponent },
+  { path: '**', redirectTo: 'folder/inbox' }
 ];
 
 @NgModule({

@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', loadChildren: () => import('./mail/mail.module').then(mod => mod.MailModule) },
-  { path: '**', redirectTo: 'folder/inbox' },
+  { path: '', loadChildren: () => import('./mail/mail.module').then(mod => mod.MailModule) }
 ];
 
 @NgModule({
