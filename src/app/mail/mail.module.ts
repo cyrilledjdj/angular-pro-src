@@ -6,11 +6,12 @@ import { MailFolderComponent } from './containers/mail-folder/mail-folder.compon
 import { MailRoutingModule } from './mail-routing.module';
 import { MailService } from './mail.service';
 import { MailFolderResolve } from './containers/mail-folder/mail-folder.resolver';
+import { MailViewComponent } from './components/mail-view/mail-view.component';
 
 
 
 @NgModule({
-  declarations: [MailAppComponent, MailItemComponent, MailFolderComponent],
+  declarations: [MailAppComponent, MailItemComponent, MailFolderComponent, MailViewComponent],
   imports: [
     CommonModule,
     MailRoutingModule

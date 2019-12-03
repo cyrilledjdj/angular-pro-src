@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { MailViewComponent } from './components/mail-view/mail-view.component';
 import { MailFolderComponent } from './containers/mail-folder/mail-folder.component';
 import { MailFolderResolve } from './containers/mail-folder/mail-folder.resolver';
 
@@ -10,6 +11,7 @@ const routes: Routes = [
       messages: MailFolderResolve
     }
   },
+  { path: 'message/:id', component: MailViewComponent, outlet: 'pane' },
   { path: '**', redirectTo: 'folder/inbox' }
 ];
 
