@@ -4,20 +4,27 @@ import { MailViewComponent } from './components/mail-view/mail-view.component';
 import { MailFolderComponent } from './containers/mail-folder/mail-folder.component';
 import { MailFolderResolve } from './containers/mail-folder/mail-folder.resolve';
 import { MailViewResolve } from './components/mail-view/mail-view.resolve';
+import { MailAppComponent } from './components/mail-app/mail-app.component';
 
 
 const routes: Routes = [
   {
-    path: 'folder/:name', component: MailFolderComponent, resolve: {
-      messages: MailFolderResolve
-    }
+    path: 'mail',
+    component: MailAppComponent,
+    children: [
+      {
+        path: 'folder/:name', component: MailFolderComponent, resolve: {
+          messages: MailFolderResolve
+        }
+      },
+      {
+        path: 'message/:id', component: MailViewComponent, outlet: 'pane', resolve: {
+          message: MailViewResolve
+        }
+      }
+    ]
   },
-  {
-    path: 'message/:id', component: MailViewComponent, outlet: 'pane', resolve: {
-      message: MailViewResolve
-    }
-  },
-  { path: '**', redirectTo: 'folder/inbox' }
+  { path: '**', redirectTo: 'mail/folder/inbox' }
 ];
 
 @NgModule({
