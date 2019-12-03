@@ -13,6 +13,7 @@ import { StockInventoryModule } from './stock-inventory/stock-inventory.module';
 import { ExampleThreeComponent } from './three/example-three.component';
 import { TooltipDirective } from './tooltip/tooltip.directive';
 import { ExampleTwoComponent } from './two/example-two.component';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ExampleTwoComponent } from './two/example-two.component';
     AppRoutingModule,
     AuthFormModule,
     StockInventoryModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
