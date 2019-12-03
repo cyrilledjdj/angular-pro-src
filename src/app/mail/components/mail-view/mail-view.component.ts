@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'mail-view',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MailViewComponent implements OnInit {
 
-  constructor() { }
+  message$ = this.route.data.pipe(pluck('message'));
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
   }

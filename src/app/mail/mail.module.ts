@@ -5,8 +5,9 @@ import { MailItemComponent } from './components/mail-item/mail-item.component';
 import { MailFolderComponent } from './containers/mail-folder/mail-folder.component';
 import { MailRoutingModule } from './mail-routing.module';
 import { MailService } from './mail.service';
-import { MailFolderResolve } from './containers/mail-folder/mail-folder.resolver';
+import { MailFolderResolve } from './containers/mail-folder/mail-folder.resolve';
 import { MailViewComponent } from './components/mail-view/mail-view.component';
+import { MailViewResolve } from './components/mail-view/mail-view.resolve';
 
 
 
@@ -16,7 +17,7 @@ import { MailViewComponent } from './components/mail-view/mail-view.component';
     CommonModule,
     MailRoutingModule
   ],
-  providers: [MailService, MailFolderResolve],
+  providers: [MailService, MailFolderResolve, MailViewResolve],
   exports: [MailAppComponent]
 })
 export class MailModule { }

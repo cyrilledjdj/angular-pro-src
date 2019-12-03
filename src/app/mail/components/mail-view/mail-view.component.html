@@ -1,3 +1,5 @@
 <div class="mail-view">
-  I am a message!
+  {{(message$ | async).timestamp | date : 'shortTime'}}
+  <h2>{{(message$ | async).from}}</h2>
+  <p>{{(message$ | async).summary}}</p>
 </div>

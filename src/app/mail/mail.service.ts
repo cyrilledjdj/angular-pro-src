@@ -21,4 +21,8 @@ export class MailService {
     });
   }
 
+  getMessage(id: number): Observable<Mail> {
+    return this.http.get<Mail>(`${MESSAGES_API}/messages/${id}`, { responseType: 'json' });
+  }
+
 }
