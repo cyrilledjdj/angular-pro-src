@@ -8,12 +8,23 @@ import { pluck } from 'rxjs/operators';
   styleUrls: ['./mail-view.component.scss']
 })
 export class MailViewComponent implements OnInit {
-
+  reply = '';
   message$ = this.route.data.pipe(pluck('message'));
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe(() => {
+      this.reply = '';
+    });
+  }
+
+  updateReply(value: string) {
+    this.reply = value;
+  }
+
+  sendReply() {
+    console.log('Sent!', this.reply);
   }
 
 }
