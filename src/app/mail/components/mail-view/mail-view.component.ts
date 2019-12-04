@@ -9,6 +9,7 @@ import { pluck } from 'rxjs/operators';
 })
 export class MailViewComponent implements OnInit {
   reply = '';
+  hasUnsavedChanges = false;
   message$ = this.route.data.pipe(pluck('message'));
 
   constructor(private route: ActivatedRoute) { }
@@ -21,10 +22,12 @@ export class MailViewComponent implements OnInit {
 
   updateReply(value: string) {
     this.reply = value;
+    this.hasUnsavedChanges = true;
   }
 
   sendReply() {
     console.log('Sent!', this.reply);
+    this.hasUnsavedChanges = false;
   }
 
 }
