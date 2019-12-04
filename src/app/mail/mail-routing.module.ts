@@ -13,6 +13,7 @@ const routes: Routes = [
     path: 'mail',
     component: MailAppComponent,
     canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: 'folder/:name', component: MailFolderComponent, resolve: {
