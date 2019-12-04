@@ -13,11 +13,11 @@ export class MailAppComponent implements OnInit {
   }
 
   onActivate(data) {
-    console.log('Activate', data)
+    console.log('Activate', data);
   }
 
   onDeactivate(data) {
-    console.log('Deactivate', data)
+    console.log('Deactivate', data);
   }
 
 }
