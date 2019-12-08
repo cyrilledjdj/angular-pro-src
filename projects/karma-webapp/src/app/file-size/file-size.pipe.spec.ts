@@ -1,3 +1,7 @@
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { FileSizePipe } from './file-size.pipe';
 
 describe('FileSizePipe', () => {
@@ -30,4 +34,53 @@ describe('FileSizePipe', () => {
     });
   });
 
+  describe('Shallow FileSizePipe test', () => {
+    let component: TestComponent;
+    let fixture: ComponentFixture<TestComponent>;
+    let el: HTMLElement;
+
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        declarations: [TestComponent, FileSizePipe]
+      });
+      fixture = TestBed.createComponent(TestComponent);
+      component = fixture.componentInstance;
+      el = fixture.nativeElement;
+      fixture.detectChanges();
+    });
+
+    it('should convert bytes to megabytes', () => {
+      expect(el.textContent).toContain('117.74MB');
+      component.size = 987654321;
+      fixture.detectChanges();
+      expect(el.textContent).toContain('941.90MB');
+    });
+
+    it('should use the default extension when not supplied', () => {
+      expect(el.textContent).toContain('117.74MB');
+      component.size = 987654321;
+      fixture.detectChanges();
+      expect(el.textContent).toContain('941.90MB');
+    });
+
+    it('should override the extension when supplied', () => {
+      component.suffix = 'myExt';
+      fixture.detectChanges();
+      expect(el.textContent).toContain('117.74myExt');
+      component.size = 987654321;
+      fixture.detectChanges();
+      expect(el.textContent).toContain('941.90myExt');
+    });
+  });
+
 });
+@Component({
+  selector: 'app-test-component',
+  template: `
+    Size: {{size | fileSize:suffix}}
+  `
+})
+class TestComponent {
+  suffix;
+  size = 123456789;
+}
