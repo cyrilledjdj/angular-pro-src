@@ -123,6 +123,128 @@
           }
         }
       }
+    },
+    "karma-webapp": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/karma-webapp",
+      "sourceRoot": "projects/karma-webapp/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/karma-webapp",
+            "index": "projects/karma-webapp/src/index.html",
+            "main": "projects/karma-webapp/src/main.ts",
+            "polyfills": "projects/karma-webapp/src/polyfills.ts",
+            "tsConfig": "projects/karma-webapp/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/karma-webapp/src/favicon.ico",
+              "projects/karma-webapp/src/assets"
+            ],
+            "styles": [
+              "projects/karma-webapp/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/karma-webapp/src/environments/environment.ts",
+                  "with": "projects/karma-webapp/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "karma-webapp:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "karma-webapp:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "karma-webapp:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/karma-webapp/src/test.ts",
+            "polyfills": "projects/karma-webapp/src/polyfills.ts",
+            "tsConfig": "projects/karma-webapp/tsconfig.spec.json",
+            "karmaConfig": "projects/karma-webapp/karma.conf.js",
+            "assets": [
+              "projects/karma-webapp/src/favicon.ico",
+              "projects/karma-webapp/src/assets"
+            ],
+            "styles": [
+              "projects/karma-webapp/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/karma-webapp/tsconfig.app.json",
+              "projects/karma-webapp/tsconfig.spec.json",
+              "projects/karma-webapp/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/karma-webapp/e2e/protractor.conf.js",
+            "devServerTarget": "karma-webapp:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "karma-webapp:serve:production"
+            }
+          }
+        }
+      }
     }},
   "defaultProject": "angular-pro-src"
 }
