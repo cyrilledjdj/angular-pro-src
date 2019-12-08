@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FileSizePipe } from './file-size/file-size.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FileSizePipe
   ],
   imports: [
     BrowserModule,
