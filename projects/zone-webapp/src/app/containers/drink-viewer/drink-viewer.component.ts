@@ -7,7 +7,7 @@ export interface Drink {
 	name: string;
 	price: number;
 }
-class DrinkFoodService extends FoodService {
+export class DrinkFoodService extends FoodService {
 	type = 'drinks';
 }
 @Component({

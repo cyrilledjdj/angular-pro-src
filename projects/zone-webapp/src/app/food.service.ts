@@ -18,6 +18,6 @@ export class FoodService {
 	}
 
 	getFood(): Observable<Food[]> {
-		return this.http.get<any[]>(this.api + this.type, { responseType: 'json' });
+		return this.http.get<any[]>(this.api + (this.type || ''), { responseType: 'json' });
 	}
 }
