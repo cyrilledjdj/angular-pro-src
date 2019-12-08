@@ -12,9 +12,12 @@ type Food = Drink | Pizza | Side;
 	providedIn: 'root'
 })
 export class FoodService {
-	constructor(private http: HttpClient, @Inject(API_TOKEN) private api: string) {}
+	type: string;
+	constructor(private http: HttpClient, @Inject(API_TOKEN) private api: string) {
+		console.log('Ultimate Cyrille');
+	}
 
-	getFood(type?): Observable<Food[]> {
-		return this.http.get<any[]>(this.api + type, { responseType: 'json' });
+	getFood(): Observable<Food[]> {
+		return this.http.get<any[]>(this.api + this.type, { responseType: 'json' });
 	}
 }

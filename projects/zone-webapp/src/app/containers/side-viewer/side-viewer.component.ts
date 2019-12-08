@@ -8,16 +8,21 @@ export interface Side {
 	price: number;
 }
 
+class SideFoodService extends FoodService {
+	type = 'sides';
+}
+
 @Component({
 	selector: 'side-viewer',
 	templateUrl: './side-viewer.component.html',
-	styleUrls: [ './side-viewer.component.scss' ]
+	styleUrls: [ './side-viewer.component.scss' ],
+	providers: [ { provide: FoodService, useClass: SideFoodService } ]
 })
 export class SideViewerComponent implements OnInit {
 	items$: Observable<Side[]>;
 	constructor(private foodService: FoodService) {}
 
 	ngOnInit() {
-		this.items$ = this.foodService.getFood('sides');
+		this.items$ = this.foodService.getFood();
 	}
 }
