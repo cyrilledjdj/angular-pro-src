@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FoodStoreService } from './food-store/food-store.service';
 
 @Component({
 	selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	title = 'zone-webapp';
+	store$ = this.foodService.getStore();
+	constructor(private foodService: FoodStoreService) {}
 }
