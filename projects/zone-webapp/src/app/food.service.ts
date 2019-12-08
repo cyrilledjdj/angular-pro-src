@@ -6,8 +6,6 @@ import { Pizza } from './containers/pizza-viewer/pizza-viewer.component';
 import { Side } from './containers/side-viewer/side-viewer.component';
 import { API_TOKEN } from './token';
 
-type Food = Drink | Pizza | Side;
-
 @Injectable({
 	providedIn: 'root'
 })
@@ -17,7 +15,13 @@ export class FoodService {
 		console.log('Ultimate Cyrille');
 	}
 
-	getFood(): Observable<Food[]> {
-		return this.http.get<any[]>(this.api + (this.type || ''), { responseType: 'json' });
+	getDrinks(): Observable<Drink[]> {
+		return this.http.get<any[]>(this.api + 'drinks', { responseType: 'json' });
+	}
+	getPizzas(): Observable<Pizza[]> {
+		return this.http.get<any[]>(this.api + 'pizzas', { responseType: 'json' });
+	}
+	getSides(): Observable<Side[]> {
+		return this.http.get<any[]>(this.api + 'sides', { responseType: 'json' });
 	}
 }

@@ -7,21 +7,20 @@ export interface Pizza {
 	name: string;
 	price: number;
 }
-
-export class PizzaFoodService extends FoodService {
-	type = 'pizzas';
+export abstract class PizzaService {
+	getPizzas: () => Observable<Pizza[]>;
 }
 @Component({
 	selector: 'pizza-viewer',
 	templateUrl: './pizza-viewer.component.html',
 	styleUrls: [ './pizza-viewer.component.scss' ],
-	providers: [ { provide: FoodService, useClass: PizzaFoodService } ]
+	providers: [ { provide: PizzaService, useExisting: FoodService } ]
 })
 export class PizzaViewerComponent implements OnInit {
 	items$: Observable<Pizza[]>;
-	constructor(private foodService: FoodService) {}
+	constructor(private foodService: PizzaService) {}
 
 	ngOnInit() {
-		this.items$ = this.foodService.getFood();
+		this.items$ = this.foodService.getPizzas();
 	}
 }

@@ -9,30 +9,21 @@ export interface Side {
 	price: number;
 }
 
-export class SideFoodService extends FoodService {
-	constructor(http: HttpClient, api: string) {
-		super(http, api);
-	}
-}
-
-export function SideFactory(http) {
-	return new SideFoodService(http, 'http://localhost:3000/sides');
+export abstract class SideService {
+	getSides: () => Observable<Side[]>;
 }
 
 @Component({
 	selector: 'side-viewer',
 	templateUrl: './side-viewer.component.html',
 	styleUrls: [ './side-viewer.component.scss' ],
-	providers: [
-		{ provide: FoodService, useFactory: SideFactory, deps: [ HttpClient ] }
-		// { provide: FoodService, useClass: SideFoodService }
-	]
+	providers: [ { provide: SideService, useExisting: FoodService } ]
 })
 export class SideViewerComponent implements OnInit {
 	items$: Observable<Side[]>;
 	constructor(private foodService: FoodService) {}
 
 	ngOnInit() {
-		this.items$ = this.foodService.getFood();
+		this.items$ = this.foodService.getSides();
 	}
 }
