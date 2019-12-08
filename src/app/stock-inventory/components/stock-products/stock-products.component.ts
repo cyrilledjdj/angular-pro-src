@@ -3,43 +3,37 @@ import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
 import { Product } from '../../models/product';
 
 @Component({
-  selector: 'stock-products',
-  templateUrl: './stock-products.component.html',
-  styleUrls: ['./stock-products.component.scss']
+	selector: 'stock-products',
+	templateUrl: './stock-products.component.html',
+	styleUrls: [ './stock-products.component.scss' ]
 })
 export class StockProductsComponent implements OnInit {
+	@Input() parent: FormGroup;
 
-  @Input()
-  parent: FormGroup;
+	@Input() map: Map<number, Product>;
 
-  @Input()
-  map: Map<number, Product>;
+	@Output() removed = new EventEmitter<any>();
 
-  @Output()
-  removed = new EventEmitter<any>();
+	get stocks(): AbstractControl[] {
+		return (this.parent.get('stock') as FormArray).controls;
+	}
 
-  get stocks(): AbstractControl[] {
-    return (this.parent.get('stock') as FormArray).controls;
-  }
+	constructor() {}
 
-  constructor() { }
+	ngOnInit() {}
 
-  ngOnInit() {
-  }
+	getProduct(id) {
+		return this.map.get(id);
+	}
 
-  getProduct(id) {
-    return this.map.get(id);
-  }
+	onRemove(group, index) {
+		this.removed.emit({ group, index });
+	}
 
-  onRemove(group, index) {
-    this.removed.emit({ group, index });
-  }
-
-  removeAll() {
-    const stocks = this.parent.get('stock') as FormArray;
-    while (this.stocks.length) {
-      stocks.removeAt(0);
-    }
-  }
-
+	removeAll() {
+		const stocks = this.parent.get('stock') as FormArray;
+		while (this.stocks.length) {
+			stocks.removeAt(0);
+		}
+	}
 }
