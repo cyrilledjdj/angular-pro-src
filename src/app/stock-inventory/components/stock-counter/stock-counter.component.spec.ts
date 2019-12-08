@@ -56,4 +56,7 @@ describe('StockCounterComponent', () => {
 		component.increment();
 		expect(component.value).toBe(1);
 	});
+
+	// Changes to use ControlValueAccessor no longer need the @Output
+	xit('should call the output on a value change', () => {});
 });
