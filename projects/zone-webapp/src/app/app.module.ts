@@ -7,11 +7,12 @@ import { AppComponent } from './app.component';
 import { DrinkViewerComponent } from './containers/drink-viewer/drink-viewer.component';
 import { PizzaViewerComponent } from './containers/pizza-viewer/pizza-viewer.component';
 import { SideViewerComponent } from './containers/side-viewer/side-viewer.component';
+import { API_TOKEN } from './token';
 
 @NgModule({
 	declarations: [ AppComponent, DrinkViewerComponent, PizzaViewerComponent, SideViewerComponent ],
 	imports: [ BrowserModule, AppRoutingModule, HttpClientModule ],
-	providers: [ { provide: 'api', useValue: 'http://localhost:3000/' } ],
+	providers: [ { provide: API_TOKEN, useValue: 'http://localhost:3000/' } ],
 	bootstrap: [ AppComponent ]
 })
 export class AppModule {}
