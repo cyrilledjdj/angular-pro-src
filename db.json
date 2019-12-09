@@ -1,162 +1,193 @@
 {
-	"cart": [
-		{
-			"product_id": 1,
-			"quantity": 10
-		},
-		{
-			"product_id": 3,
-			"quantity": 50
-		}
-	],
-	"products": [
-		{
-			"id": 1,
-			"price": 2800,
-			"name": "MacBook Pro"
-		},
-		{
-			"id": 2,
-			"price": 50,
-			"name": "USB-C Adaptor"
-		},
-		{
-			"id": 3,
-			"price": 400,
-			"name": "iPod"
-		},
-		{
-			"id": 4,
-			"price": 900,
-			"name": "iPhone"
-		},
-		{
-			"id": 5,
-			"price": 600,
-			"name": "Apple Watch"
-		}
-	],
-	"branches": [
-		{
-			"id": "B123"
-		},
-		{
-			"id": "A323"
-		},
-		{
-			"id": "V123"
-		},
-		{
-			"id": "E123"
-		},
-		{
-			"id": "Q123"
-		}
-	],
-	"messages": [
-		{
-			"id": 1,
-			"folder": "inbox",
-			"from": "Jane Smith",
-			"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lobortis, neque at ultricies fringilla, ligula metus",
-			"timestamp": 1487848162905
-		},
-		{
-			"id": 2,
-			"folder": "inbox",
-			"from": "John Doe",
-			"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lobortis, neque at ultricies fringilla, ligula metus",
-			"timestamp": 1487845787719
-		},
-		{
-			"id": 3,
-			"folder": "inbox",
-			"from": "Joseph Hanes",
-			"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lobortis, neque at ultricies fringilla, ligula metus",
-			"timestamp": 1487845787719
-		},
-		{
-			"id": 4,
-			"folder": "trash",
-			"from": "Laurence Murray",
-			"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lobortis, neque at ultricies fringilla, ligula metus",
-			"timestamp": 1487845787719
-		}
-	],
-	"pizzas": [
-		{ "name": "Pepperoni", "price": 10 },
-		{ "name": "Chicken", "price": 12 },
-		{ "name": "Hawaiian", "price": 12 }
-	],
-	"sides": [
-		{ "name": "Chicken Strips", "price": 4 },
-		{ "name": "Fries", "price": 5 },
-		{ "name": "Garlic Bread", "price": 6 }
-	],
-	"drinks": [ { "name": "Cola", "price": 3 }, { "name": "Lemonade", "price": 2 }, { "name": "Dr Salt", "price": 3 } ],
-	"stores": [
-		{
-			"id": 10292,
-			"name": "London, UK",
-			"token": "eca938c99a0e9ff91029dc"
-		}
-	],
-	"playlist": [
-		{
-			"id": 1,
-			"artist": "Oasis",
-			"track": "Half The World Away",
-			"listened": false,
-			"favourite": true
-		},
-		{
-			"id": 2,
-			"artist": "Pink Floyd",
-			"track": "Wish You Were Here",
-			"listened": true,
-			"favourite": false
-		},
-		{
-			"id": 3,
-			"artist": "Blink-182",
-			"track": "All The Small Things",
-			"listened": false,
-			"favourite": true
-		},
-		{
-			"id": 4,
-			"artist": "Third Eye Blind",
-			"track": "Get Me Out Of Here",
-			"listened": true,
-			"favourite": false
-		},
-		{
-			"id": 5,
-			"artist": "The Chainsmokers",
-			"track": "Closer",
-			"listened": false,
-			"favourite": false
-		},
-		{
-			"id": 6,
-			"artist": "Sia",
-			"track": "Cheap Thrills",
-			"listened": true,
-			"favourite": true
-		},
-		{
-			"id": 7,
-			"artist": "Birdy",
-			"track": "Wild Horses",
-			"listened": false,
-			"favourite": true
-		},
-		{
-			"id": 8,
-			"artist": "Stereophonics",
-			"track": "Local Boy In The Photograph",
-			"listened": false,
-			"favourite": false
-		}
-	]
+  "cart": [
+    {
+      "product_id": 1,
+      "quantity": 10
+    },
+    {
+      "product_id": 3,
+      "quantity": 50
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "price": 2800,
+      "name": "MacBook Pro"
+    },
+    {
+      "id": 2,
+      "price": 50,
+      "name": "USB-C Adaptor"
+    },
+    {
+      "id": 3,
+      "price": 400,
+      "name": "iPod"
+    },
+    {
+      "id": 4,
+      "price": 900,
+      "name": "iPhone"
+    },
+    {
+      "id": 5,
+      "price": 600,
+      "name": "Apple Watch"
+    }
+  ],
+  "branches": [
+    {
+      "id": "B123"
+    },
+    {
+      "id": "A323"
+    },
+    {
+      "id": "V123"
+    },
+    {
+      "id": "E123"
+    },
+    {
+      "id": "Q123"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "folder": "inbox",
+      "from": "Jane Smith",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lobortis, neque at ultricies fringilla, ligula metus",
+      "timestamp": 1487848162905
+    },
+    {
+      "id": 2,
+      "folder": "inbox",
+      "from": "John Doe",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lobortis, neque at ultricies fringilla, ligula metus",
+      "timestamp": 1487845787719
+    },
+    {
+      "id": 3,
+      "folder": "inbox",
+      "from": "Joseph Hanes",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lobortis, neque at ultricies fringilla, ligula metus",
+      "timestamp": 1487845787719
+    },
+    {
+      "id": 4,
+      "folder": "trash",
+      "from": "Laurence Murray",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lobortis, neque at ultricies fringilla, ligula metus",
+      "timestamp": 1487845787719
+    }
+  ],
+  "pizzas": [
+    {
+      "name": "Pepperoni",
+      "price": 10
+    },
+    {
+      "name": "Chicken",
+      "price": 12
+    },
+    {
+      "name": "Hawaiian",
+      "price": 12
+    }
+  ],
+  "sides": [
+    {
+      "name": "Chicken Strips",
+      "price": 4
+    },
+    {
+      "name": "Fries",
+      "price": 5
+    },
+    {
+      "name": "Garlic Bread",
+      "price": 6
+    }
+  ],
+  "drinks": [
+    {
+      "name": "Cola",
+      "price": 3
+    },
+    {
+      "name": "Lemonade",
+      "price": 2
+    },
+    {
+      "name": "Dr Salt",
+      "price": 3
+    }
+  ],
+  "stores": [
+    {
+      "id": 10292,
+      "name": "London, UK",
+      "token": "eca938c99a0e9ff91029dc"
+    }
+  ],
+  "playlist": [
+    {
+      "id": 1,
+      "artist": "Oasis",
+      "track": "Half The World Away",
+      "listened": false,
+      "favourite": true
+    },
+    {
+      "id": 2,
+      "artist": "Pink Floyd",
+      "track": "Wish You Were Here",
+      "listened": true,
+      "favourite": false
+    },
+    {
+      "id": 3,
+      "artist": "Blink-182",
+      "track": "All The Small Things",
+      "listened": false,
+      "favourite": true
+    },
+    {
+      "id": 4,
+      "artist": "Third Eye Blind",
+      "track": "Get Me Out Of Here",
+      "listened": true,
+      "favourite": false
+    },
+    {
+      "id": 5,
+      "artist": "The Chainsmokers",
+      "track": "Closer",
+      "listened": false,
+      "favourite": false
+    },
+    {
+      "id": 6,
+      "artist": "Sia",
+      "track": "Cheap Thrills",
+      "listened": true,
+      "favourite": true
+    },
+    {
+      "id": 7,
+      "artist": "Birdy",
+      "track": "Wild Horses",
+      "listened": false,
+      "favourite": true
+    },
+    {
+      "id": 8,
+      "artist": "Stereophonics",
+      "track": "Local Boy In The Photograph",
+      "listened": false,
+      "favourite": false
+    }
+  ]
 }
