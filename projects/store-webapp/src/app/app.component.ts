@@ -9,12 +9,13 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
 	title = 'store-webapp';
-	todo$: Observable<any[]> = this.store.select<any[]>('todos');
+	todo$: Observable<any[]>;
 	todos: any[];
 	constructor(private store: Store) {
 		this.store.set('todos', [ { id: 1, name: 'Eat dinner' }, { id: 2, name: 'Do washing' } ]);
 	}
 	ngOnInit() {
+		this.todo$ = this.store.select<any[]>('todos');
 		this.todo$.subscribe((val) => (this.todos = val));
 	}
 }

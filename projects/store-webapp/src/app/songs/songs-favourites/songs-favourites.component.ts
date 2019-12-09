@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '../../store';
+import { SongsService } from '../services/songs.service';
 
 @Component({
 	selector: 'songs-favourites',
@@ -7,7 +8,10 @@ import { Store } from '../../store';
 	styleUrls: [ './songs-favourites.component.scss' ]
 })
 export class SongsFavouritesComponent implements OnInit {
-	constructor(private store: Store) {}
+	favourites$;
+	constructor(private store: Store, songsService: SongsService) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.favourites$ = this.store.select('playlist');
+	}
 }

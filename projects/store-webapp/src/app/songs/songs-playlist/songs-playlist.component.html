@@ -1,3 +1,6 @@
 <div>
-	Playlist
+	<div *ngFor="let item of playlist$ | async">
+		{{item.artist}}
+		{{item.track}}
+	</div>
 </div>
