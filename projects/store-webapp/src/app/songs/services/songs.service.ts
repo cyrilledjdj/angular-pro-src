@@ -24,4 +24,8 @@ export class SongsService {
 			.get<Song[]>(this.api + 'playlist', { responseType: 'json' })
 			.pipe(tap((next) => this.store.set('playlist', next)));
 	}
+
+	toggle(data) {
+		console.log(data);
+	}
 }

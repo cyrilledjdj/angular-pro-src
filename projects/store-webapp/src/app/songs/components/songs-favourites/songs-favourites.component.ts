@@ -12,11 +12,14 @@ import { Observable } from 'rxjs';
 })
 export class SongsFavouritesComponent implements OnInit {
 	favourites$: Observable<Song[]>;
-	constructor(private store: Store, songsService: SongsService) {}
+	constructor(private store: Store, private songsService: SongsService) {}
 
 	ngOnInit() {
 		this.favourites$ = this.store
 			.select('playlist')
 			.pipe(filter(Boolean), map((playlist: Song[]) => playlist.filter((track) => track.favourite)));
+	}
+	onToggle(data) {
+		this.songsService.toggle(data);
 	}
 }
