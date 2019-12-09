@@ -1,4 +1,9 @@
-<ul>
+<div>
+	<songs-playlist></songs-playlist>
+	<songs-listened></songs-listened>
+	<songs-favourites></songs-favourites>
+</div>
+<ul *ngIf=false>
 	<li *ngFor="let todo of todos">
 		{{ todo.name }}
 	</li>
