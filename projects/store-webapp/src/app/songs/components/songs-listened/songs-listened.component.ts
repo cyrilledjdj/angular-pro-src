@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '../../store';
-import { SongsService } from '../services/songs.service';
 import { filter, map } from 'rxjs/operators';
+
+import { Store } from '../../../store';
+import { SongsService, Song } from '../../services/songs.service';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'songs-listened',
@@ -9,12 +11,12 @@ import { filter, map } from 'rxjs/operators';
 	styleUrls: [ './songs-listened.component.scss' ]
 })
 export class SongsListenedComponent implements OnInit {
-	listened$;
+	listened$: Observable<Song[]>;
 	constructor(private store: Store, private songsService: SongsService) {}
 
 	ngOnInit() {
 		this.listened$ = this.store
 			.select('playlist')
-			.pipe(filter(Boolean), map((playlist: any[]) => playlist.filter((track) => track.favourite)));
+			.pipe(filter(Boolean), map((playlist: Song[]) => playlist.filter((track) => track.listened)));
 	}
 }

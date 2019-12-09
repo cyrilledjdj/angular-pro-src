@@ -4,9 +4,6 @@
 	<songs-favourites></songs-favourites>
 </div>
 <ul>
-	<li *ngFor="let todo of todos">
-		{{ todo.name }}
-	</li>
 	<li *ngFor="let todo of todos$ | async">
 		{{ todo.name }}
 	</li>
