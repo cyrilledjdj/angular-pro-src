@@ -1,5 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Store } from '../../../store';
+import { SongsService } from '../../services/songs.service';
+import { SongsListComponent } from '../songs-list/songs-list.component';
 import { SongsListenedComponent } from './songs-listened.component';
 
 describe('SongsListenedComponent', () => {
@@ -8,9 +11,10 @@ describe('SongsListenedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SongsListenedComponent ]
-    })
-    .compileComponents();
+      declarations: [SongsListenedComponent, SongsListComponent],
+      imports: [HttpClientTestingModule],
+      providers: [Store, SongsService, { provide: 'api', useValue: '' }],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -3,12 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "db": "json-server db.json"
+		"start": "ng serve",
+		"build": "ng build && ng build store-webapp && ng build zone-webapp",
+		"test": "ng test",
+		"lint": "ng lint",
+		"e2e": "ng e2e",
+		"store:start": "ng serve store-webapp --port 4201",
+		"zone:start": "ng serve zone-webapp --port 4201",
+		"db": "json-server db.json"
   },
   "private": true,
   "dependencies": {
