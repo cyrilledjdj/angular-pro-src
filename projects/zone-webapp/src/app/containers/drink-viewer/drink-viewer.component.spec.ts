@@ -1,5 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { API_TOKEN } from '../../token';
 import { DrinkViewerComponent } from './drink-viewer.component';
 
 describe('DrinkViewerComponent', () => {
@@ -8,9 +9,10 @@ describe('DrinkViewerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DrinkViewerComponent ]
-    })
-    .compileComponents();
+      declarations: [DrinkViewerComponent],
+      imports: [HttpClientTestingModule],
+      providers: [{ provide: API_TOKEN, useValue: '' }],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
