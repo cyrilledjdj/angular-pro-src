@@ -3,16 +3,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { MailModule } from './mail/mail.module';
 
-describe('AppComponent', () => {
+xdescribe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        MailModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule, MailModule],
+      declarations: [AppComponent],
     }).compileComponents();
   }));
 
