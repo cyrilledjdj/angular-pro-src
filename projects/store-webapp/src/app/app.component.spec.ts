@@ -1,16 +1,16 @@
-import { TestBed, async } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { SongsModule } from './songs/songs.module';
+import { Store } from './store';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [BrowserModule, RouterTestingModule, SongsModule],
+      providers: [Store],
+      declarations: [AppComponent],
     }).compileComponents();
   }));
 
@@ -26,10 +26,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('store-webapp');
   });
 
-  it('should render title', () => {
+  it('should render a list of todo items', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('store-webapp app is running!');
+    expect(compiled.querySelector('ul li')).toBeTruthy();
   });
 });
