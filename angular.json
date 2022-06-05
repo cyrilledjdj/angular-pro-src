@@ -22,6 +22,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
+            "buildOptimizer": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -145,6 +146,7 @@
             "polyfills": "projects/zone-webapp/src/polyfills.ts",
             "tsConfig": "projects/zone-webapp/tsconfig.app.json",
             "aot": false,
+            "buildOptimizer": false,
             "assets": [
               "projects/zone-webapp/src/favicon.ico",
               "projects/zone-webapp/src/assets"
@@ -267,6 +269,7 @@
             "polyfills": "projects/store-webapp/src/polyfills.ts",
             "tsConfig": "projects/store-webapp/tsconfig.app.json",
             "aot": false,
+            "buildOptimizer": false,
             "assets": [
               "projects/store-webapp/src/favicon.ico",
               "projects/store-webapp/src/assets"
@@ -369,5 +372,8 @@
         }
       }
     }},
-  "defaultProject": "angular-pro-src"
+  "defaultProject": "angular-pro-src",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -4,11 +4,11 @@
       (focus)=onFocus($event) tabindex="0">
       <p>{{value}}</p>
       <div>
-        <button type=button (click)=increment($event)
+        <button type=button (click)=increment()
           [disabled]="value === max || isDisabled">
           +
         </button>
-        <button type=button (click)=decrement($event)
+        <button type=button (click)=decrement()
           [disabled]="value === min || isDisabled">
           -
         </button>
